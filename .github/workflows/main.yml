@@ -18,10 +18,12 @@ jobs:
             git clone https://github.com/povlhp/zeroW-crosscompile.git &&
             cd zeroW-crosscompile &&
             gcc test.c -o /tmp/test &&
-            pwd >/tmp/pwd
+            pwd >/tmp/pwd &&
+            printenv >>/tmp &&
+            pwd && printenv
             "
-        copy_artifact_path: /tmp/
-        copy_artifact_dest: artifacts        # on the runner
+        copy_artifact_path: tmp/
+        copy_artifact_dest: artifacts/        # on the runner
 
     - name: Upload binary as artifact
       uses: actions/upload-artifact@v4
