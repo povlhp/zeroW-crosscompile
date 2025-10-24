@@ -6,12 +6,15 @@ jobs:
     steps:
     - uses: pguyot/arm-runner-action@v2
       with:
-        base_image: raspi_1_bookworm:20231109
+        base_image: https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2025-05-13/2025-05-13-raspios-bookworm-armhf-lite.img.xz
+        image_additional_mb: 1024
         cpu: arm1176
         cpu_info: cpuinfo/raspberrypi_zero_w
         commands: |
             bash -c "
             set -ex &&
+            mkdir src
+            ls -l >src/dirlist.txt
             apt-get update && 
             apt-get install -y build-essential git cmake qtbase5-dev qtbase5-private-dev qtchooser qt5-qmake qtbase5-dev-tools qttools5-dev-tools libqt5svg5-dev qtmultimedia5-dev libqt5charts5-dev qtpositioning5-dev qtconnectivity5-dev libqt5websockets5-dev libqt5texttospeech5-dev libqt5bluetooth5 libqt5networkauth5-dev qml-module-qtlocation qml-module-qtpositioning qtlocation5-dev libqt5quickcontrols2-5 qtquickcontrols2-5-dev qml-module-qtquick-controls2 qtbase5-dev libqt5sql5-sqlite libqt5sql5 libqt5sql5-mysql libqt5sql5-psql &&
             git clone https://github.com/cagnulein/qdomyos-zwift.git && cd qdomyos-zwift
@@ -19,7 +22,7 @@ jobs:
             cat qdomyos-zwift.pro &&
             qmake &&
             make -j$(nproc) &&
-            cd ../.. && mkdir src && cp qdomyos-zwift/src/qdomyos-zwift-32bit src/qdomyos-zwift-32bit
+            cd ../.. && cp qdomyos-zwift/src/qdomyos-zwift-32bit src/qdomyos-zwift-32bit
             "
         copy_artifact_path: src/qdomyos-zwift-32bit
         copy_artifact_dest: artifacts/qdomyos-zwift-PiZeroW        # on the runner
