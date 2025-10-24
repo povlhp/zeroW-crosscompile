@@ -9,7 +9,7 @@ jobs:
         base_image: raspios_lite:latest
         cpu: arm1176
         arch: armv6l
-        cpu_info: raspberrypi_zero_w
+        cpu_info: cpuinfo/raspberrypi_zero_w
         commands: |
             bash -c "
             set -ex &&
