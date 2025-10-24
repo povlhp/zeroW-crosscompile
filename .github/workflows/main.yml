@@ -23,9 +23,9 @@ jobs:
         copy_artifact_path: /tmp/
         copy_artifact_dest: artifacts        # on the runner
 
-      - name: Upload binary as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: artifacts/	
+    - name: Upload binary as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts
+        path: artifacts/	
           
