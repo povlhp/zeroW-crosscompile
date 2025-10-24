@@ -12,6 +12,7 @@ jobs:
         cpu_info: cpuinfo/raspberrypi_zero_w
         commands: |
             bash -c "
+            pwd && printenv
             set -ex &&
             apt-get update && 
             apt-get install -y build-essential git &&
@@ -19,8 +20,7 @@ jobs:
             cd zeroW-crosscompile &&
             gcc test.c -o /tmp/test &&
             pwd >/tmp/pwd &&
-            printenv >>/tmp &&
-            pwd && printenv
+            printenv >>/tmp/penv
             "
         copy_artifact_path: tmp/
         copy_artifact_dest: artifacts/        # on the runner
