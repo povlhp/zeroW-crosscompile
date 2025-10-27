@@ -20,7 +20,7 @@ jobs:
             git clone https://github.com/cagnulein/qmdnsengine.git &&
             x=`pwd` &&
             cd qmdnsengine/ &&
-            cmake  &&
+            cmake . &&
             make && make install &&
             cd $x &&
             git clone https://github.com/cagnulein/qdomyos-zwift.git &&
