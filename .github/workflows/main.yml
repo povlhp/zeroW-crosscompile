@@ -28,7 +28,7 @@ jobs:
             cat qdomyos-zwift.pro &&
             qmake qdomyos-zwift.pro  &&
             make -j$(nproc) &&
-            cd ../.. && cp qdomyos-zwift/src/qdomyos-zwift-32bit src/qdomyos-zwift-32bit
+            cd ../.. && cp qdomyos-zwift/src/qdomyos-zwift src/qdomyos-zwift-32bit
             "
         copy_artifact_path: src/qdomyos-zwift-32bit
         copy_artifact_dest: artifacts/qdomyos-zwift-PiZeroW        # on the runner
