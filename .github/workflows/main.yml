@@ -31,11 +31,11 @@ jobs:
             cp qdomyos-zwift ../../qdomyos-zwift-32bit
             "
         copy_artifact_path: qdomyos-zwift-32bit
-        copy_artifact_dest: artifacts/qdomyos-zwift-PiZeroW        # on the runner
+        copy_artifact_dest: qdomyos-zwift-PiZeroW        # on the runner
 
     - name: Upload binary as artifact
       uses: actions/upload-artifact@v4
       with:
         name: artifacts
-        path: artifacts/	
+        path: qdomyos-zwift-PiZeroW	
           
